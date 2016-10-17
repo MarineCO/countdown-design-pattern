@@ -23,26 +23,23 @@
    			}, 1000);
    		},
    		updateView: function(min, sec){
-   			var minutes = Math.floor(app.t/60);
-   			var secondes = app.t % 60;
+   			var heures = Math.floor(app.t/3600);
+   			var minutes = Math.floor((app.t % 3600)/60);
+   			var secondes = app.t % 3600 % 60;
 
-   			if (minutes < 10 && secondes < 10) {
-   				$('h1').html('0' + minutes + ':' + '0' + secondes);
+   			$('h1').html(app.addZero(heures) + ':' + app.addZero(minutes) + ':' + app.addZero(secondes));
+   		},
+   		addZero: function(nombre) {
+   			if (nombre < 10) {
+   				nombre = '0' + nombre;
    			}
-   			else if (minutes < 10 && secondes >= 10) {
-   				$('h1').html('0' + minutes + ':' + secondes);
-   			}
-   			else if (minutes >= 10 && secondes < 10) {
-   				$('h1').html(minutes + ':' + '0' + secondes);
-   			}
-   			else {
-   				$('h1').html(minutes + ':' + secondes);
-   			}
+   			return nombre;
    		},
    		reinitialize: function(){
+   			var inputHour = parseInt($('#inputHour').val(),10);
    			var inputMinute = parseInt($('#inputMinute').val(),10);
    			var inputSecond = parseInt($('#inputSecond').val(),10);
-   			app.t = inputMinute * 60 + inputSecond;
+   			app.t = (inputHour * 3600) + (inputMinute * 60) + inputSecond;
    			app.go();
    		},
    		stop: function(){
@@ -52,7 +49,7 @@
    		},
    		reset: function(){
    			clearInterval(app.intervalID);
-   			$('h1').html('25:00');
+   			$('h1').html('00:25:00');
    			app.t = 1500;
    		},
    	}
