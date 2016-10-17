@@ -3,6 +3,7 @@
    	window.app = {
    		t: 1500,
    		intervalID: null,
+   		progressID: null,
    		count: 1,
    		init: function(){
    			app.listeners();
@@ -17,12 +18,13 @@
    			app.intervalID = setInterval(function(){
    				app.updateView();
    				app.t--;
+   				;
    				if (app.t === 0) {
    					clearInterval(app.intervalID);
    				}
    			}, 1000);
    		},
-   		updateView: function(min, sec){
+   		updateView: function(){
    			var heures = Math.floor(app.t/3600);
    			var minutes = Math.floor((app.t % 3600)/60);
    			var secondes = app.t % 3600 % 60;

@@ -3,21 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Countdown</title>
-	<!-- <link rel="stylesheet" type="text/css" href="countdown2.css"> -->
+	<link rel="stylesheet" type="text/css" href="countdown2.css">
+	<link rel="stylesheet" type="text/css" href="semantic-ui/dist/semantic.min.css">
 </head>
-<body>
-	<h1>00:25:00</h1>
-	<div>
-		<input id="inputHour" type="number" placeholder="Hour">
-		<input id="inputMinute" type="number" placeholder="Minute">
-		<input id="inputSecond" type="number" placeholder="Second">
+<body class="ui inverted segment">
+
+	<div class="ui centered grid">
+		<h1 class="ui massive message">00:25:00</h1>
 	</div>
-	<div>
-		<button id="btnReinitialize">Reinitialize</button>
-		<button id="btnStart">Start</button>
-		<button id="btnStop">Stop</button>
-		<button id="btnReset">Reset</button>
+	<div class="ui centered grid">
+		<div class="wide row">
+			<input id="inputHour" class="ui action input" type="number" placeholder="Hour">
+			<input id="inputMinute" class="ui action input" type="number" placeholder="Minute">
+			<input id="inputSecond" class="ui action input" type="number" placeholder="Second">
+		</div>
+		<div class="wide row"">
+			<button id="btnReinitialize" class="ui inverted purple button">Reinitialize</button>
+			<button id="btnStart" class="ui inverted purple button">Start</button>
+			<button id="btnStop" class="ui inverted purple button">Stop</button>
+			<button id="btnReset" class="ui inverted purple button">Reset</button>
+		</div>
 	</div>
+
 
 	
 	<script src="node_modules/jquery/dist/jquery.js"></script>
