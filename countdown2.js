@@ -15,23 +15,34 @@
    		},
    		go: function(){
    			app.intervalID = setInterval(function(){
-   				app.t--;
    				app.updateView();
+   				app.t--;
    				if (app.t === 0) {
    					clearInterval(app.intervalID);
    				}
    			}, 1000);
    		},
-   		updateView: function(){
+   		updateView: function(min, sec){
    			var minutes = Math.floor(app.t/60);
    			var secondes = app.t % 60;
-   			$('h1').html(minutes + ':' + secondes);
+
+   			if (minutes < 10 && secondes < 10) {
+   				$('h1').html('0' + minutes + ':' + '0' + secondes);
+   			}
+   			else if (minutes < 10 && secondes >= 10) {
+   				$('h1').html('0' + minutes + ':' + secondes);
+   			}
+   			else if (minutes >= 10 && secondes < 10) {
+   				$('h1').html(minutes + ':' + '0' + secondes);
+   			}
+   			else {
+   				$('h1').html(minutes + ':' + secondes);
+   			}
    		},
    		reinitialize: function(){
    			var inputMinute = parseInt($('#inputMinute').val(),10);
    			var inputSecond = parseInt($('#inputSecond').val(),10);
    			app.t = inputMinute * 60 + inputSecond;
-   			$('h1').html(inputMinute + ':' + inputSecond);
    			app.go();
    		},
    		stop: function(){
@@ -47,8 +58,5 @@
    	}
 
    	app.init();
-   	console.log('hello');
-
-
 
    });
