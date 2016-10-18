@@ -8,27 +8,32 @@
 </head>
 <body class="ui inverted segment">
 
-	<div class="ui centered grid">
-		<h1 class="ui massive message">00:25:00</h1>
+	<div class="ui centered aligned grid">
+		<h1 class="large-text">00:25:00</h1>
 	</div>
+
 	<div class="ui centered grid">
+
 		<div class="wide row">
 			<input id="inputHour" class="ui action input" type="number" placeholder="Hour">
 			<input id="inputMinute" class="ui action input" type="number" placeholder="Minute">
 			<input id="inputSecond" class="ui action input" type="number" placeholder="Second">
 		</div>
+
 		<div class="wide row"">
-			<button id="btnReinitialize" class="ui inverted purple button">Reinitialize</button>
-			<button id="btnStart" class="ui inverted purple button">Start</button>
-			<button id="btnStop" class="ui inverted purple button">Stop</button>
-			<button id="btnReset" class="ui inverted purple button">Reset</button>
+			<button id="btnReinitialize" class="ui massive inverted purple button">Reinitialize</button>
+			<button id="btnStart" class="ui massive inverted purple button">Start</button>
+			<button id="btnStop" class="ui massive inverted purple button">Stop</button>
+			<button id="btnReset" class="ui massive inverted purple button">Reset</button>
 		</div>
+
 	</div>
-	<div class="ui teal progress" id="progressBar">
+
+	<div class="ui green progress" id="progressBar">
 		<div class="bar">
 			<div class="progress"></div>
 		</div>
-		<div class="label">%</div>
+		<div class="percent">%</div>
 	</div>
 
 	

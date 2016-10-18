@@ -1,0 +1,12 @@
+.large-text {
+	font-size: 130px;
+	padding: 80px;
+	/*border: solid white 3px;*/
+}
+#inputHour, #inputMinute, #inputSecond {
+	padding: 13px;
+}
+.percent {
+	color: white;
+	text-align: center;
+}
