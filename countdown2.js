@@ -1,4 +1,5 @@
    $(document).ready(function(){
+      "use.strict";
 
    	window.app = {
    		t: 1500,
@@ -6,16 +7,16 @@
    		progressID: null,
    		count: 1,
    		init: function(){
-   			app.listeners();
+   			this.listeners();
    		},
    		listeners: function(){
-   			$('#btnStart').on('click', app.go);
-   			$('#btnReinitialize').on('click', app.reinitialize);
-   			$('#btnStop').on('click', app.stop);
-   			$('#btnReset').on('click', app.reset);
-   		},
-   		go: function(){
-   			app.intervalID = setInterval(function(){
+   			$('#btnStart').on('click', this.go);
+   			$('#btnReinitialize').on('click', this.reinitialize);
+   			$('#btnStop').on('click', this.stop);
+   			$('#btnReset').on('click', this.reset);
+         },
+         go: function(){
+            app.intervalID = setInterval(function(){
    				app.updateView();
    				app.t--;
    				;
@@ -23,13 +24,23 @@
    					clearInterval(app.intervalID);
    				}
    			}, 1000);
+   			// app.progressID = setInterval(function(){
+   			// 	var largeur = $(".label").css("width");
+   			// 	var width = 100;
+   			// 	if (width <= 0) {
+   			// 		app.stop();
+   			// 	} else {
+   			// 		width--;
+   			// 		largeur = width - '%';
+   			// 	}
+   			// }, 1000);
    		},
    		updateView: function(){
    			var heures = Math.floor(app.t/3600);
    			var minutes = Math.floor((app.t % 3600)/60);
    			var secondes = app.t % 3600 % 60;
 
-   			$('h1').html(app.addZero(heures) + ':' + app.addZero(minutes) + ':' + app.addZero(secondes));
+   			$('h1').html(this.addZero(heures) + ':' + this.addZero(minutes) + ':' + app.addZero(secondes));
    		},
    		addZero: function(nombre) {
    			if (nombre < 10) {
