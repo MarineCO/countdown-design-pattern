@@ -5,9 +5,7 @@
          timeSeconds: 10,
          startT: null,
          intervalID: null,
-         progressID: null,
          count: 1,
-         timerID: null,
 
          init: function(){
             this.listeners();
@@ -22,7 +20,7 @@
 
          go: function(){
             this.stop();
-            this.startT = this.t;
+            this.startT = this.timeSeconds;
             this.intervalID = setInterval(function(){
                this.updateView();
                this.progress();
