@@ -34,7 +34,7 @@
          },
 
          progress: function(){
-            var percentage = ((app.startT - app.t) / app.startT)* 100;
+            var percentage = ((this.startT - this.t) / this.startT)* 100;
             $('.bar').css('width', percentage + '%');
             $('.progress').css('height', percentage + '%');
             $('p').text(percentage + '%');
