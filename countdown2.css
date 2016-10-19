@@ -10,3 +10,7 @@
 	color: white;
 	text-align: center;
 }
+.progress {
+	height: 100px;
+	margin: 0;
+}

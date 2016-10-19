@@ -36,6 +36,7 @@
             var percentage = ((this.startT - this.t) / this.startT)* 100;
             $('.bar').css('width', percentage + '%');
             $('.progress').css('height', percentage + '%');
+            $('p').text(percentage + '%');
          },
 
          updateView: function(){
