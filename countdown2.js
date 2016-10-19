@@ -7,6 +7,7 @@
          intervalID: null,
          progressID: null,
          count: 1,
+         timerID: null,
 
          init: function(){
             this.listeners();
@@ -24,16 +25,16 @@
             this.startT = this.t;
             this.intervalID = setInterval(function(){
                this.updateView();
+               this.progress();
                this.t--;
-               app.progress();
-               if (this.t === 0) {
+               if (this.t < 0) {
                   clearInterval(this.intervalID);
                }
             }.bind(this), 1000);
          },
 
          progress: function(){
-            var percentage = ((this.startT - this.t) / this.startT)* 100;
+            var percentage = ((app.startT - app.t) / app.startT)* 100;
             $('.bar').css('width', percentage + '%');
             $('.progress').css('height', percentage + '%');
             $('p').text(percentage + '%');
@@ -55,7 +56,7 @@
          },
 
          reinitialize: function(){
-            app.stop();
+            this.stop();
             var inputHour = parseInt($('#inputHour').val(),10);
             var inputMinute = parseInt($('#inputMinute').val(),10);
             var inputSecond = parseInt($('#inputSecond').val(),10);
@@ -79,7 +80,7 @@
          },
 
          reset: function(){
-            app.stop();
+            this.stop();
             clearInterval(this.intervalID);
             $('h1').html('00:25:00');
             this.t = 1500;
