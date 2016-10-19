@@ -2,7 +2,7 @@
       "use.strict";
 
       window.app = {
-         t: 10,
+         timeSeconds: 10,
          startT: null,
          intervalID: null,
          progressID: null,
@@ -26,24 +26,24 @@
             this.intervalID = setInterval(function(){
                this.updateView();
                this.progress();
-               this.t--;
-               if (this.t < 0) {
+               this.timeSeconds--;
+               if (this.timeSeconds < 0) {
                   clearInterval(this.intervalID);
                }
             }.bind(this), 1000);
          },
 
          progress: function(){
-            var percentage = ((this.startT - this.t) / this.startT)* 100;
+            var percentage = ((this.startT - this.timeSeconds) / this.startT)* 100;
             $('.bar').css('width', percentage + '%');
             $('.progress').css('height', percentage + '%');
             $('p').text(percentage + '%');
          },
 
          updateView: function(){
-            var heures = Math.floor(this.t/3600);
-            var minutes = Math.floor((this.t % 3600)/60);
-            var secondes = this.t % 3600 % 60;
+            var heures = Math.floor(this.timeSeconds/3600);
+            var minutes = Math.floor((this.timeSeconds % 3600)/60);
+            var secondes = this.timeSeconds % 3600 % 60;
 
             $('h1').html(this.addZero(heures) + ':' + this.addZero(minutes) + ':' + this.addZero(secondes));
          },
@@ -69,7 +69,7 @@
             if (isNaN(inputSecond)){
                inputSecond = 0;
             }
-            this.t = (inputHour * 3600) + (inputMinute * 60) + inputSecond;
+            this.timeSeconds = (inputHour * 3600) + (inputMinute * 60) + inputSecond;
             this.go();
          },
 
@@ -83,7 +83,7 @@
             this.stop();
             clearInterval(this.intervalID);
             $('h1').html('00:25:00');
-            this.t = 1500;
+            this.timeSeconds = 1500;
          },
       }
 
