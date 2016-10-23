@@ -2,7 +2,7 @@
       "use.strict";
 
       window.app = {
-         timeSeconds: 10,
+         timeSeconds: 1500,
          startT: null,
          intervalID: null,
          count: 1,
@@ -32,7 +32,7 @@
          },
 
          progress: function(){
-            var percentage = ((this.startT - this.timeSeconds) / this.startT)* 100;
+            var percentage = parseInt(((this.startT - this.timeSeconds) / this.startT)* 100,10);
             $('.bar').css('width', percentage + '%');
             $('.progress').css('height', percentage + '%');
             $('p').text(percentage + '%');
@@ -81,10 +81,19 @@
             this.stop();
             clearInterval(this.intervalID);
             $('h1').html('00:25:00');
-            this.timeSeconds = 1500;
+            this.timeSeconds = 300;
          },
       }
 
       app.init();
+
+      var firstTimestamp = new Date().getTime();
+
+      app.progress();
+
+      var secondTimestamp = new Date().getTime(),
+      result = secondTimestamp - firstTimestamp;
+
+      console.log(result + "millisecondes");
 
    });
