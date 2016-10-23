@@ -2,7 +2,7 @@
       "use.strict";
 
       window.app = {
-         timeSeconds: 10,
+         timeSeconds: 1500,
          startT: null,
          intervalID: null,
          count: 1,
